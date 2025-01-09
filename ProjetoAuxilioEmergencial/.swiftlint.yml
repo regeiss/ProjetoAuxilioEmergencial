@@ -1,0 +1,7 @@
+line_length: 160
+
+disabled_rules:
+- vertical_whitespace
+- statement_position
+- multiple_closures_with_trailing_closure
+- switch_case_alignment
