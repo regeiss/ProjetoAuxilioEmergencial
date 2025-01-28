@@ -8,16 +8,16 @@
 import SwiftUI
 
 struct OnBoardingView: View {
-    @State private var currentTab = 0
+  @State private var currentTab = 0
 
-    var body: some View {
-        TabView(selection: $currentTab, content: {
-            ForEach(OnboardingData.list) { viewData in
-                OnboardingTabView(data: viewData)
-                    .tag(viewData.id)
-            }
-        })
-        .tabViewStyle(PageTabViewStyle())
-        .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
-    }
+  var body: some View {
+    TabView(selection: $currentTab, content: {
+      ForEach(OnboardingData.list) { viewData in
+        OnboardingTabView(data: viewData)
+          .tag(viewData.id)
+      }
+    })
+    .tabViewStyle(PageTabViewStyle())
+    .indexViewStyle(PageIndexViewStyle(backgroundDisplayMode: .always))
+  }
 }

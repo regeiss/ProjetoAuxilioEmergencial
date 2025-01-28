@@ -9,25 +9,15 @@ import Foundation
 import FirebaseCore
 import FirebaseFirestore
 
-struct Notificacao: Identifiable, Codable
-{
+struct Notificacao: Identifiable, Codable {
     @DocumentID var id: String?
-    var nome: String
-    var ativo: Bool = true
-    var userId: String?
+    var titulo: String
+    var texto: String
+    var data: Date
+    var prioridade: Int
+    var lido: Bool = false
 }
 
-extension Notificacao
-{
-    static let collectionName = "abrigo"
-}
-
-extension Notificacao
-{
-  static let samples = [
-    Notificacao(id: "1", nome: "********", ativo: true),
-    Notificacao(id: "2", nome: "************", ativo: false),
-    Notificacao(id: "3", nome: "**", ativo: true),
-    Notificacao(id: "4", nome: "********************", ativo: true)
-  ]
+extension Notificacao {
+    static let collectionName = "notificacao"
 }

@@ -8,34 +8,28 @@
 import SwiftUI
 
 struct TabViewScreen: View {
-    var body: some View {
-        TabView {
-            Tab("Main", systemImage: "house") {
-                PlaceholderScreen()
-            }
 
-            TabSection("Blog") {
-                Tab("All topics", systemImage: "pencil") {
-                    PlaceholderScreen()
-                }
+  var body: some View {
 
-                Tab("SwiftUI", systemImage: "swift") {
-                    Text("SwiftUI topic")
-                }
+    TabView {
+      Tab("Home", systemImage: "house") {
+        PlaceholderScreen()
+      }
+      Tab("Cadastros", systemImage: "person.crop.square.on.square.angled") {
+        NotificacaoListScreen()
+      }
 
-                Tab("Concurrency", systemImage: "timelapse") {
-                    Text("Concurrency topic")
-                }
+      Tab("Abrigos", systemImage: "house") {
+        Text("SwiftUI topic")
+      }
 
-                Tab("Ajustes", systemImage: "gear") {
-                    SettingsScreen()
-                }
-            }
+      Tab("Localizacao", systemImage: "map") {
+        LocalizacaoAtualScreen()
+      }
 
-            Tab("Blog", systemImage: "pencil") {
-                Text("This is the blog page")
-            }
-            // repeat for other sections...
-        }.tabViewStyle(.sidebarAdaptable)
+      Tab("Perfil", systemImage: "person") {
+        SettingsScreen()
+      }
     }
+  }
 }
