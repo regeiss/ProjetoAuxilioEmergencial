@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import FirebaseCrashlytics
 
 struct PlaceholderScreen: View {
 
   @State private var isSettingsScreenPresented = false
+  @EnvironmentObject private var errorHandling: ErrorHandling
 
   private func presentSettingsScreen() {
     isSettingsScreenPresented.toggle()
@@ -20,10 +22,17 @@ struct PlaceholderScreen: View {
     NavigationStack {
       VStack {
         Text("Tela placeholder")
+        Button("Simulate Network Error") {
+          do {
+            try simulateNetworkRequest()
+          } catch {
+            errorHandling.handle(error: error)
+          }
+        }
       }
       .navigationTitle("Auxilio Emergencial")
       .sheet(isPresented: $isSettingsScreenPresented) {
-        SettingsScreen()
+        UserProfileView()
       }
       .toolbar {
         ToolbarItemGroup(placement: .confirmationAction) {
@@ -33,5 +42,13 @@ struct PlaceholderScreen: View {
         }
       }
     }
+  }
+
+  func simulateNetworkRequest() throws {
+
+    fatalError("Crash was triggered")
+
+    //    Crashlytics.crashlytics().record(error: AppError.networkError)
+    //    throw AppError.networkError("Failed to connect to the server.")
   }
 }

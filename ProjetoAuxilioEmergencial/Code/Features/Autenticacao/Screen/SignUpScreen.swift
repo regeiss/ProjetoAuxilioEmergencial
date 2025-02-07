@@ -19,7 +19,7 @@ private enum FocusableField: Hashable {
 }
 
 struct SignupScreen: View {
-  
+
     @EnvironmentObject var viewModel: AuthenticationViewModel
     @Environment(\.colorScheme) var colorScheme
     @Environment(\.dismiss) var dismiss

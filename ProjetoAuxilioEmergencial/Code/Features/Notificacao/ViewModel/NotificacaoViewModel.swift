@@ -25,7 +25,7 @@ class NotificacaoViewModel: ObservableObject {
 
   func addNotificacao(_ notificacao: Notificacao) {
     do {
-      try notificacoesRepository.addNotificacao(notificacao)
+      try notificacoesRepository.add(notificacao)
       errorMessage = nil
     }
     catch {
@@ -36,7 +36,7 @@ class NotificacaoViewModel: ObservableObject {
 
   func updateNotificacao(_ notificacao: Notificacao) {
     do {
-      try notificacoesRepository.updateNotificacao(notificacao)
+      try notificacoesRepository.update(notificacao)
       errorMessage = nil
     }
     catch {

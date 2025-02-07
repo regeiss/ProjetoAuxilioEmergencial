@@ -18,8 +18,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
   func application(_ application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
-
-
     FirebaseApp.configure()
     authenticationService.signInAnonymously()
     return true
@@ -30,6 +28,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct ProjetoAuxilioEmergencialApp: App {
 
   @UIApplicationDelegateAdaptor var appDelegate: AppDelegate
+  @StateObject private var errorHandling = ErrorHandling()
 
   var sharedModelContainer: ModelContainer = {
     let schema = Schema([
@@ -49,6 +48,14 @@ struct ProjetoAuxilioEmergencialApp: App {
     WindowGroup {
       ContentView()
         .modifier(DarkModeViewModifier())
+        .environmentObject(errorHandling)
+        .alert(item: $errorHandling.currentError) { error in
+          Alert(
+            title: Text("Error"),
+            message: Text(error.message),
+            dismissButton: .default(Text("OK"))
+          )
+        }
     }
     .modelContainer(sharedModelContainer)
   }
